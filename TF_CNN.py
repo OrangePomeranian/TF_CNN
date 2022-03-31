@@ -104,7 +104,6 @@ model = tf.keras.layers.Dense(4, activation = 'softmax')(model)
 model = tf.keras.models.Model(inputs = effnet_premodel.input, outputs = model)
 
 print(model.summary())
-t_start = perf_counter()
 
 model.compile(loss = 'categorical_crossentropy', optimizer = 'Adam', metrics = ['accuracy'])
 
@@ -121,6 +120,7 @@ reduce_lr = ReduceLROnPlateau(monitor = "val_accuracy",
                               min_delta = 0.001,
                               mode = "auto",
                               verbose = 1)
+t_start = perf_counter()
 
 history = model.fit(X_train, y_train,
                     validation_split = 0.1,
