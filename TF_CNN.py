@@ -138,7 +138,7 @@ train_loss = history.history['loss']
 val_acc = history.history['val_accuracy']
 val_loss = history.history['val_loss']
 
-fig.text(s = "Przejscia vs. Uczenie i Walidacja Dokladnosc/Straty",
+fig.text(s = "Liczba Trenowan Modelu od Jego Uczenia i Walidacji",
          size = 18,
          fontweight = 'bold',
          fontname = 'monospace',
@@ -160,10 +160,10 @@ ax[0].plot(epochs,
            marker = 'o',
            markerfacecolor = colors_red[2],
            color = colors_red[3],
-           label = "Dokladnosc sprawdzenia")
+           label = "Dokladnosc walidacji")
 
 ax[0].legend(frameon = False)
-ax[0].set_xlabel("Przejscie")
+ax[0].set_xlabel("Liczba Trenowan Modelu")
 ax[0].set_ylabel("Dokladnosc")
 
 sns.despine()
@@ -179,13 +179,13 @@ ax[1].plot(epochs,
            marker = 'o',
            markerfacecolor = colors_red[2],
            color = colors_red[3],
-           label = "Straty sprawdzenia")
+           label = "Straty walidacji")
 
 ax[1].legend(frameon = False)
-ax[1].set_xlabel("Przejscie")
-ax[1].set_ylabel("Straty na uczeniu sie i sprawdzaniu")
+ax[1].set_xlabel("Liczba Trenowan Modelu")
+ax[1].set_ylabel("Straty na Uczeniu i Walidacji")
 
-fig.savefig("fig.jpg")
+fig.savefig("Liczba_Trenowan_Modelu_od_Jego_Uczenia_i_Walidacji.jpg")
 
 pred_model = model.predict(X_test)
 pred_model = np.argmax(pred_model, axis = 1)
@@ -202,7 +202,7 @@ sns.heatmap(confusion_matrix(y_test_new, pred_model),
             linewidths = 2,
             linecolor = colors_dark[3])
 
-fig.text(s = "Mapa skupien macierzy pomylek",
+fig.text(s = "Mapa Cieplna Dokladnosci Modelu",
          size = 18,
          fontweight = 'bold',
          fontname = 'monospace',
@@ -211,7 +211,7 @@ fig.text(s = "Mapa skupien macierzy pomylek",
          y = 0.92,
          alpha = 0.8)
 
-plt.savefig("Mapa skupien macierzy pomylek.jpg")
+plt.savefig("Mapa_Cieplna_Dokladnosci_Modelu.jpg")
 
 
 print(classification_report(y_test_new, pred_model))
