@@ -3,7 +3,7 @@ from tensorflow import keras
 import numpy as np
 import cv2
 import os
-import tqdm
+from tqdm import tqdm
 
 labels = ['glioma_tumor', 'no_tumor', 'meningioma_tumor', 'pituitary_tumor']
 size_of_image = 150
@@ -21,4 +21,7 @@ reconstructed_model = keras.models.load_model('Tumor_Prediction_Model.h5')
 reconstructed_model.summary()
 
 image_prediction = reconstructed_model.predict(X_pred)
-print(image_prediction)
+image_prediction = np.argmax(image_prediction, axis = 1)
+
+for i in range(len(image_prediction)):
+    print(labels[int(image_prediction[i])])
