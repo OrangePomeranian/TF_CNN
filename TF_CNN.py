@@ -128,6 +128,9 @@ history = model.fit(X_train, y_train,
                     verbose = 1, batch_size = 32,
                     callbacks = [tensorboard, checkpoint, reduce_lr])
 
+#zapis modelu
+model.save("Tumor_Prediction_Model.h5")
+
 filterwarnings('ignore')
 t_stop = perf_counter()
 
