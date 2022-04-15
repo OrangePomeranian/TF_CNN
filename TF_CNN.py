@@ -17,6 +17,7 @@ from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import ImageDataGenerator
 import matplotlib.pyplot as plt
 from time import perf_counter
+import datetime
 
 colors_green = ['#01411C','#4B6F44','#4F7942','#74C365','#D0F0C0']
 colors_red = ['#331313', '#582626', '#9E1717', '#D35151', '#E9B4B4']
@@ -30,7 +31,7 @@ for dirname, _, filenames in os.walk("/kaggle/input"):
         print(os.path.join(dirname, filename))
 
 global iterations_on_data
-iterations_on_data = 12
+iterations_on_data = 5
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 labels = ['glioma_tumor', 'no_tumor', 'meningioma_tumor', 'pituitary_tumor']
@@ -107,8 +108,11 @@ print(model.summary())
 
 model.compile(loss = 'categorical_crossentropy', optimizer = 'Adam', metrics = ['accuracy'])
 
+log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 tensorboard = TensorBoard(log_dir = 'log')
-checkpoint = ModelCheckpoint("effnet.h5",
+tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir = log_dir, histogram_freq=1)
+
+checkpoint = ModelCheckpoint("/log/effnet.h5",
                              monitor = "val_accuracy",
                              save_best_only = True,
                              mode = "auto",
@@ -126,7 +130,7 @@ history = model.fit(X_train, y_train,
                     validation_split = 0.1,
                     epochs = iterations_on_data,
                     verbose = 1, batch_size = 32,
-                    callbacks = [tensorboard, checkpoint, reduce_lr])
+                    callbacks = [tensorboard, checkpoint, reduce_lr, tensorboard_callback])
 
 #zapis modelu
 model.save("Tumor_Prediction_Model.h5")
