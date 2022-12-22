@@ -6,7 +6,7 @@ We processed 3200 MRI images of brain cancer with different classifications.
 
 Our aim was to create a classification model for patients with suspected brain tumour development based on MRI images.
 
-The project conisted of below points:
+The project consisted of below points:
 1. Import of libraries and modules
 2. Data preparation
 3. Dividing our data into testing and learning sets
