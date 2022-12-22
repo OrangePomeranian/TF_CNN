@@ -1,6 +1,6 @@
 # TF_CNN
 
-More informations in Projekt Zaliczeniowy PDF.pdf
+More informations about this project in Projekt Zaliczeniowy PDF.pdf
 
 We processed 3200 MRI images of brain cancer with different classifications.
 
