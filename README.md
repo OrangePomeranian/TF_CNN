@@ -28,8 +28,8 @@ Examples of the functions we use from the Keras package from the TensorFlow pack
 - tf.keras.Model.fit()
 
 Finally we presented the results with the use of seaborn library - Simple charts with accuracy of learning and validation, training loss and validation and heatmaps with classification of each tumour. 
-![Screenshot 2022-12-22 at 20 12 22](https://user-images.githubusercontent.com/67764136/209210494-6b27e4c5-3fe2-49b4-a303-2096ecc2af29.png)
-![Screenshot 2022-12-22 at 20 12 38](https://user-images.githubusercontent.com/67764136/209210482-c7341629-c846-417a-9e0c-993b0075cb98.png)
+![](https://github.com/Michello077/tumor-classification-using-CNN/blob/4344f59c1d397dc91127bbef2bf6876a89cf84c7/results/CNN001.png)
+![](https://github.com/Michello077/tumor-classification-using-CNN/blob/4344f59c1d397dc91127bbef2bf6876a89cf84c7/results/CNN002.png)
 
 
 
